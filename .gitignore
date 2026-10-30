@@ -1,0 +1,49 @@
+# ==============================================================================
+# ENYXMA OS - REPOSITORY IGNORE SPECIFICATION
+# ==============================================================================
+
+# === Nix Build Outputs ===
+result
+result-*
+.cache/
+
+# === Direnv & Local Environment ===
+.direnv/
+.envrc.local
+.env
+
+# === Secrets, Private Keys & Tokens (MUTLAK YASAK) ===
+*.key
+*.dec
+*.decrypted
+secrets/keys.txt
+secrets/age/keys.txt
+id_ed25519*
+!id_ed25519*.pub
+*.pem
+*.pfx
+*.p12
+
+# === Virtual Machines, ISOs & Disk Images ===
+*.qcow2
+*.img
+*.iso
+/build/
+vm-state/
+
+# === Package Manager & Build Garbage (Zero-Trust) ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# === Editor & OS Junk ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.bak
+*.orig

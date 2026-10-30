@@ -1,0 +1,146 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "hyprland": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793318000,
+        "narHash": "sha256-08J4h5JnCV/QP2RjS/AAVmK0XAX9ffq/A0euujLNaHM=",
+        "ref": "refs/heads/main",
+        "rev": "7eb2b9604e7aaf342247a058b5b0a51dede840da",
+        "revCount": 21,
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/hyprland"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/hyprland"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1793110635,
+        "narHash": "sha256-dhoW6VgFWlaodSY5jrBn+CF2FLmaUvDVgM7+C7T2+NM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "31ecbaca1bdefa45dffc409f0250bd8039ea0010",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "shell",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792214446,
+        "narHash": "sha256-tq6x6CRG8Qikrjri59tzu9+b2gri8TjnShkGeh8kUgQ=",
+        "ref": "refs/heads/master",
+        "rev": "2b4501a282689792b62e94f3fb30d8f512324fe6",
+        "revCount": 875,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
+    "root": {
+      "inputs": {
+        "hyprland": "hyprland",
+        "nixpkgs": "nixpkgs",
+        "shell": "shell",
+        "thornhill": "thornhill"
+      }
+    },
+    "shell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "quickshell": "quickshell"
+      },
+      "locked": {
+        "lastModified": 1793281781,
+        "narHash": "sha256-GfX2pmPbWcOgFIbtTV0eMHTJYkGfSXbvHucl2jcf7V4=",
+        "ref": "refs/heads/main",
+        "rev": "9e8877808008d0d2778d007bfd1cd90f9efc9fba",
+        "revCount": 31,
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/shell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/shell"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "thornhill": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792712371,
+        "narHash": "sha256-S8UlTgczRTv9irrV5mhbY4x5ghft2iDbmU/Q0bQNWZM=",
+        "ref": "refs/heads/main",
+        "rev": "97afd836727630e44b7fc32bca615fc73a73542f",
+        "revCount": 17,
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/thornhill"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/enyxma/thornhill"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
