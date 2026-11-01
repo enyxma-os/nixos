@@ -53,15 +53,15 @@
         ];
 
         shellHook = ''
-                    mkdir -p .git/hooks
-                    cat << 'HOOK' > .git/hooks/pre-commit
+          mkdir -p .git/hooks
+          cat << 'HOOK' > .git/hooks/pre-commit
           #!/usr/bin/env bash
           set -e
           deadnix --fail modules hosts
           statix check
           alejandra --check .
           HOOK
-                    chmod +x .git/hooks/pre-commit
+          chmod +x .git/hooks/pre-commit
         '';
       };
     });
@@ -77,6 +77,17 @@
       security = ./modules/security.nix;
     };
 
-    nixosConfigurations = {};
+    nixosConfigurations = {
+      test-enyxma = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit self hyprland shell thornhill;
+        };
+        modules = [
+          self.nixosModules.default
+          ./hosts/test-enyxma
+        ];
+      };
+    };
   };
 }

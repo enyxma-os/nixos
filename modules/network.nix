@@ -15,7 +15,7 @@ with lib; {
 
   config = mkIf config.enyxma.network.enable {
     networking = {
-      hostName = config.enyxma.network.hostName;
+      hostName = mkDefault config.enyxma.network.hostName;
       networkmanager.enable = true;
       firewall = {
         enable = true;
