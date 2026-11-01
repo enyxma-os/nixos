@@ -22,17 +22,34 @@
     root.initialPassword = "1";
   };
 
-  # SSH Servisi (Uzaktan yönetim için açık)
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "yes";
-      PasswordAuthentication = true;
+  services = {
+    # SSH Servisi (Uzaktan yönetim için açık)
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "yes";
+        PasswordAuthentication = true;
+      };
+    };
+
+    # QEMU Konuk Ajanı
+    qemuGuest.enable = true;
+
+    # Greetd Otomatik Oturum (Açılışta doğrudan Hyprland başlar)
+    greetd = {
+      enable = true;
+      settings = {
+        initial_session = {
+          command = "uwsm start hyprland-uwsm.desktop";
+          user = "void";
+        };
+        default_session = {
+          command = "uwsm start hyprland-uwsm.desktop";
+          user = "void";
+        };
+      };
     };
   };
-
-  # QEMU Konuk Ajanı
-  services.qemuGuest.enable = true;
 
   # Enyxma OS Lego Katmanı 1 & 2
   enyxma = {
