@@ -8,7 +8,7 @@ with lib; {
     enable = mkEnableOption "Enyxma Hardware and Storage Abstractions";
   };
 
-  config =
-    mkIf config.enyxma.hardware.enable {
-    };
+  config = mkIf config.enyxma.hardware.enable {
+    hardware.enableRedistributableFirmware = true;
+  };
 }
