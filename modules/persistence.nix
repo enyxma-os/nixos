@@ -58,6 +58,9 @@ in {
     systemd.tmpfiles.rules =
       (map (dir: "d ${cfg.persistPath}${dir} 0755 root root -") cfg.directories)
       ++ (map (file: "d ${cfg.persistPath}${builtins.dirOf file} 0755 root root -") cfg.files)
-      ++ (map (file: "L+ ${file} - - - - ${cfg.persistPath}${file}") cfg.files);
+      ++ (map (file: "L+ ${file} - - - - ${cfg.persistPath}${file}") cfg.files)
+      ++ [
+        "z ${cfg.persistPath}/etc/NetworkManager/system-connections 0700 root root -"
+      ];
   };
 }

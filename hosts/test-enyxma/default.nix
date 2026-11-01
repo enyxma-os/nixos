@@ -47,22 +47,29 @@
   networking.hostName = "test-enyxma";
 
   # Kullanıcı Tanımları: void ve root güvenli hash ile yapılandırıldı
-  users.users = {
-    void = {
-      isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager"];
-      hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
+  users = {
+    mutableUsers = false;
+    users = {
+      void = {
+        isNormalUser = true;
+        extraGroups = ["wheel" "networkmanager"];
+        hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHddadMGUqyA+BOuphCTvpChEFmA4uisGzhJIoCRMUbA 151975490+xmrah@users.noreply.github.com"
+        ];
+      };
+      root.hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
     };
-    root.hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
   };
 
   services = {
-    # SSH Servisi: Uzaktan yönetim için açık
+    # SSH Servisi: Sıkılaştırılmış uzaktan yönetim
     openssh = {
       enable = true;
       settings = {
-        PermitRootLogin = "yes";
-        PasswordAuthentication = true;
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
       };
     };
 
