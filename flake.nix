@@ -85,6 +85,9 @@
         };
         modules = [
           self.nixosModules.default
+          hyprland.nixosModules.default
+          shell.nixosModules.default
+          thornhill.nixosModules.default
           ./hosts/test-enyxma
         ];
       };
