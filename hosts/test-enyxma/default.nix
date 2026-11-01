@@ -34,12 +34,17 @@
   # QEMU Konuk Ajanı
   services.qemuGuest.enable = true;
 
-  # Enyxma OS Lego Katmanı 1: Temel Modüller
+  # Enyxma OS Lego Katmanı 1 & 2
   enyxma = {
     core.enable = true;
     security.enable = true;
     network.enable = true;
     audio.enable = true;
+
+    # Katman 2: Masaüstü ve Kabuk
+    desktop.enable = true;
+    desktop.hyprland.enable = true;
+    shell.enable = true;
   };
 
   system.stateVersion = "26.05";
