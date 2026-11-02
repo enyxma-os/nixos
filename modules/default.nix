@@ -8,5 +8,6 @@
     ./persistence.nix
     ./security.nix
     ./terminal.nix
+    ./update.nix
   ];
 }
