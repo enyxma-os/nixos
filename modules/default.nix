@@ -7,5 +7,6 @@
     ./network.nix
     ./persistence.nix
     ./security.nix
+    ./terminal.nix
   ];
 }

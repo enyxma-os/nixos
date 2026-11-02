@@ -90,6 +90,7 @@
     desktop.enable = true;
     desktop.hyprland.enable = true;
     shell.enable = true;
+    terminal.enable = true;
   };
 
   system.stateVersion = "26.05";

@@ -91,6 +91,7 @@
       network = ./modules/network.nix;
       persistence = ./modules/persistence.nix;
       security = ./modules/security.nix;
+      terminal = ./modules/terminal.nix;
     };
 
     nixosConfigurations = {
