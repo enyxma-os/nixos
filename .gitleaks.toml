@@ -1,0 +1,9 @@
+# Enyxma OS Gitleaks Guvenlik Kurali
+[extend]
+useDefault = true
+
+[[rules]]
+id = "age-secret-key"
+description = "Detected Age Secret Key"
+regex = '''AGE-SECRET-KEY-1[0-9A-Z]{50,65}'''
+keywords = ["AGE-SECRET-KEY-1"]

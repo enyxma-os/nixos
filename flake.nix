@@ -50,6 +50,7 @@
           statix
           alejandra
           shfmt
+          gitleaks
         ];
 
         shellHook = ''
@@ -57,9 +58,24 @@
           cat << 'HOOK' > .git/hooks/pre-commit
           #!/usr/bin/env bash
           set -e
-          deadnix --fail modules hosts
-          statix check
-          alejandra --check .
+
+          # Guvenlik Taramasi - Gitleaks Sentinel
+          if command -v gitleaks > /dev/null 2>&1; then
+            gitleaks protect --staged --no-banner
+          fi
+
+          # Nix Statik Kod Analizi
+          if command -v deadnix > /dev/null 2>&1; then
+            deadnix --fail modules hosts
+          fi
+
+          if command -v statix > /dev/null 2>&1; then
+            statix check
+          fi
+
+          if command -v alejandra > /dev/null 2>&1; then
+            alejandra --check .
+          fi
           HOOK
           chmod +x .git/hooks/pre-commit
         '';
