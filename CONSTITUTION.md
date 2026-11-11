@@ -52,3 +52,12 @@ OTORİTE: Enyxma Architecture Council
 1. Yorum satırına alınmış eski kod blokları, terk edilmiş masaüstü artıkları veya tarihi çöplükler depoda barındırılamaz.
 2. deadnix ve statix kontrollerinden geçmeyen hiçbir kod depoya kabul edilmez.
 3. Tüm kodlar standart alejandra ve shfmt kurallarına tam uyumlu olmalıdır.
+
+---
+
+## MADDE 7: GELİŞTİRİCİ VE TEST KULLANICISI DİSİPLİNİ
+
+1. Canlı sisteme veya test sanal makinesine SSH üzerinden rm -rf, el ile ln -s, chmod veya geçici betik çalıştırmak kesinlikle yasaktır. Canlı ortam bir geliştirme tahtası değil, son kullanıcı tüketim test alanıdır.
+2. Sistemin impermanence ve bildirimsel yapısını aşan, arkadan uygulanan el müdahaleleri gerçek sistem hatalarını maskeler. Bir hata varsa doğrudan kaynak repoda düzeltilmeli ve resmi dağıtım akışıyla sisteme gelmelidir.
+3. Kullanıcının ev dizinindeki yapılandırmalar el yordamıyla kopyalanamaz veya bağlanamaz. XDG sistem standartları, home-manager veya sistemin bildirimsel tmpfiles mekanizması dışında hiçbir kullanıcı dizini oluşturulamaz.
+4. Geliştirici veya yapay zeka asistanı, kullanıcıdan açık onay almadan dakikalarca süren zincirleme arka plan araştırmaları, döngüsel komutlar veya tüm sistemi baştan inşa eden nixos-rebuild gibi ağır süreçleri tek başına tetikleyemez.
