@@ -61,6 +61,7 @@ with lib; {
       hyprlock
       hypridle
       kdePackages.breeze
+      adwaita-icon-theme
       (sddm-astronaut.override {
         themeConfig = {
           Background = "Backgrounds/astronaut.png";

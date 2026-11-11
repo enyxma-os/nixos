@@ -20,6 +20,8 @@ in {
         "/var/lib/nixos"
         "/var/lib/systemd"
         "/var/lib/sddm"
+        "/var/lib/bluetooth"
+        "/var/lib/alsa"
         "/etc/NetworkManager/system-connections"
       ];
       description = "Directories to bind mount from persist";
