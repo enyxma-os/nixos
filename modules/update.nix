@@ -29,6 +29,15 @@
       echo -e "''${CYAN}─────────────────────────────────────────────────────''${RESET}"
     }
 
+    ensure_repo_ownership() {
+      if [ -d "$FLAKE_DIR" ]; then
+        if [ -n "$(find "$FLAKE_DIR" ! -user "$(id -u)" -print -quit 2>/dev/null)" ]; then
+          echo -e "''${YELLOW}Depo dosya sahipligi onariliyor...''${RESET}"
+          sudo chown -R "$(id -u):$(id -g)" "$FLAKE_DIR"
+        fi
+      fi
+    }
+
     check_updates() {
       show_header
       echo -e "''${BOLD}Hedef Dizin:''${RESET} $FLAKE_DIR"
@@ -40,7 +49,11 @@
         return 0
       fi
 
-      git -C "$FLAKE_DIR" fetch origin main --quiet 2>/dev/null || true
+      ensure_repo_ownership
+      if ! git -C "$FLAKE_DIR" fetch origin main --quiet; then
+        echo -e "''${RED}HATA: Uzak depo bilgisi alinamadi. Ag baglantinizi veya depo izinlerini kontrol edin.''${RESET}"
+        exit 1
+      fi
       BEHIND=$(git -C "$FLAKE_DIR" rev-list --count HEAD..origin/main 2>/dev/null || echo "0")
 
       if [ "$BEHIND" -gt 0 ]; then
@@ -66,8 +79,12 @@
       OLD_SYSTEM=$(readlink -f /run/current-system 2>/dev/null || echo "")
 
       if [ -d "$FLAKE_DIR/.git" ]; then
+        ensure_repo_ownership
         echo -e "Codeberg uzak deposu denetleniyor..."
-        git -C "$FLAKE_DIR" fetch origin main --quiet 2>/dev/null || true
+        if ! git -C "$FLAKE_DIR" fetch origin main --quiet; then
+          echo -e "''${RED}HATA: Uzak depo bilgisi alinamadi. Ag baglantinizi veya depo izinlerini kontrol edin.''${RESET}"
+          exit 1
+        fi
         BEHIND=$(git -C "$FLAKE_DIR" rev-list --count HEAD..origin/main 2>/dev/null || echo "0")
 
         if [ "$BEHIND" -gt 0 ]; then
