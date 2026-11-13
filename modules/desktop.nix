@@ -27,7 +27,7 @@ with lib; {
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
       XDG_SESSION_DESKTOP = "Hyprland";
-      QS_CONFIG_PATH = "$HOME/.local/share/enyxma-shell/0.2.0/shell.qml";
+      QS_CONFIG_PATH = "$HOME/.local/share/enyxma-shell/runtime/shell.qml";
     };
 
     xdg.portal = {
