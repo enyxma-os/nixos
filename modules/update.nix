@@ -109,6 +109,10 @@
           nvd --color=always diff "$OLD_SYSTEM" "$NEW_SYSTEM" || true
         fi
 
+        if command -v hyprctl >/dev/null 2>&1 && [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+          hyprctl reload >/dev/null 2>&1 || true
+        fi
+
         if command -v notify-send >/dev/null 2>&1; then
           notify-send "✦ Enyxma OS Guncellendi" "Sistem basariyla yeni nesle yukseltildi." -t 4000 2>/dev/null || true
         fi
