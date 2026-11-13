@@ -10,11 +10,6 @@ with lib; {
   };
 
   config = mkIf config.enyxma.desktop.enable {
-    programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-    };
-
     # Bluetooth arka plan servisi
     hardware.bluetooth = {
       enable = true;
@@ -22,24 +17,10 @@ with lib; {
     };
 
     environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      XDG_CURRENT_DESKTOP = "Hyprland";
-      XDG_SESSION_TYPE = "wayland";
-      XDG_SESSION_DESKTOP = "Hyprland";
       QS_CONFIG_PATH = "$HOME/.local/share/enyxma-shell/runtime/shell.qml";
     };
 
-    xdg.portal = {
-      enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-hyprland
-        pkgs.xdg-desktop-portal-gtk
-      ];
-      config.common.default = ["hyprland" "gtk"];
-    };
-
-    # Enyxma Shell ve Hyprland masaüstü çalışma zamanı bağımlılıkları
+    # Enyxma Shell ve masaüstü çalışma zamanı ek bağımlılıkları
     environment.systemPackages = with pkgs; [
       quickshell
       awww
@@ -52,9 +33,6 @@ with lib; {
       libnotify
       grim
       slurp
-      kitty
-      foot
-      yazi
       thunar
       thunar-volman
       librewolf
