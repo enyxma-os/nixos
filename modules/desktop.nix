@@ -40,6 +40,8 @@ with lib; {
       hypridle
       kdePackages.breeze
       adwaita-icon-theme
+      bibata-cursors
+      papirus-icon-theme
       (sddm-astronaut.override {
         themeConfig = {
           Background = "Backgrounds/astronaut.png";
@@ -124,6 +126,7 @@ with lib; {
       packages = with pkgs; [
         nerd-fonts.jetbrains-mono
         inter
+        orbitron
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-color-emoji
