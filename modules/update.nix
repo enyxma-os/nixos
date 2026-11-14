@@ -126,6 +126,9 @@
           nvd --color=always diff "$OLD_SYSTEM" "$NEW_SYSTEM" || true
         fi
 
+        if [ -z "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ] && [ -d "/run/user/$(id -u)/hypr" ]; then
+          export HYPRLAND_INSTANCE_SIGNATURE=$(ls -1 "/run/user/$(id -u)/hypr" 2>/dev/null | head -n 1 || true)
+        fi
         if command -v hyprctl >/dev/null 2>&1 && [ -n "''${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
           hyprctl reload >/dev/null 2>&1 || true
         fi
