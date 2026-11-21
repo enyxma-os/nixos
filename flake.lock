@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795253537,
-        "narHash": "sha256-h27QfrrI/pvi6xVbmDoYHUIbFxR/KoENSHa1/FKdcH4=",
+        "lastModified": 1795297815,
+        "narHash": "sha256-r9yNq/m22AOTi8k4W2zwgNld3QlvJN/jYuaotHI1A68=",
         "ref": "refs/heads/main",
-        "rev": "1c0e7767612a0502c8b4042ffbcfa74bd95dd184",
-        "revCount": 34,
+        "rev": "a481f725ffb51b17cb462982f99eeac4e9cfe8ce",
+        "revCount": 35,
         "type": "git",
         "url": "https://codeberg.org/enyxma/hyprland"
       },
@@ -91,11 +91,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1795253803,
-        "narHash": "sha256-RJ2x+UGMFlAfkMv1U6/arEUpS2x+aTcq63MMoHOIaXo=",
+        "lastModified": 1795297794,
+        "narHash": "sha256-i2ynHEl/hzrtJ7AAXxjGO6rVrh2X3fEPv2HAesgxnHA=",
         "ref": "refs/heads/main",
-        "rev": "d8cd14f3bc9c08fb0b123fa1db9343a3e549a7a9",
-        "revCount": 49,
+        "rev": "e6d04f610d6289047653cff44b6b3dd1865ab594",
+        "revCount": 50,
         "type": "git",
         "url": "https://codeberg.org/enyxma/shell"
       },
