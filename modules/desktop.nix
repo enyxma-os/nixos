@@ -38,6 +38,7 @@ with lib; {
       librewolf
       hyprlock
       hypridle
+      hyprsunset
       kdePackages.breeze
       adwaita-icon-theme
       bibata-cursors
