@@ -127,11 +127,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795334190,
-        "narHash": "sha256-ZHTxBjD4LG9advqwjG8SzZA4swuupQNdT06gMmEIVrk=",
+        "lastModified": 1795335075,
+        "narHash": "sha256-a9MTMuZY8DohUG+uUmKZBMh/i5xVclbvp0iqS5saScI=",
         "ref": "refs/heads/main",
-        "rev": "d5e7129b5715276a0314dfbbdc8b23e53776588c",
-        "revCount": 21,
+        "rev": "d57663e7c1a44d89ead3e05dea777e655b4c6232",
+        "revCount": 22,
         "type": "git",
         "url": "https://codeberg.org/enyxma/thornhill"
       },
