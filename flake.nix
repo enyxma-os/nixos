@@ -11,10 +11,6 @@
       url = "git+https://codeberg.org/enyxma/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    thornhill = {
-      url = "git+https://codeberg.org/enyxma/thornhill";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -22,7 +18,6 @@
     nixpkgs,
     hyprland,
     shell,
-    thornhill,
   }: let
     systems = ["x86_64-linux" "aarch64-linux"];
     forAllSystems = nixpkgs.lib.genAttrs systems;
@@ -98,13 +93,12 @@
       test-enyxma = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit self hyprland shell thornhill;
+          inherit self hyprland shell;
         };
         modules = [
           self.nixosModules.default
           hyprland.nixosModules.default
           shell.nixosModules.default
-          thornhill.nixosModules.default
           ./hosts/test-enyxma
         ];
       };

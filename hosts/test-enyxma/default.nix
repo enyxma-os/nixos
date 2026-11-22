@@ -1,8 +1,4 @@
-{
-  pkgs,
-  thornhill,
-  ...
-}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -79,15 +75,7 @@
 
     # QEMU Konuk Ajanı
     qemuGuest.enable = true;
-
-    # Enyxma Thornhill Bilişsel ve Refleks Servisi
-    thornhill.enable = true;
   };
-
-  # Sistem Paketleri
-  environment.systemPackages = [
-    thornhill.packages.${pkgs.system}.default
-  ];
 
   # Enyxma OS Lego Katmanı 1 & 2
   enyxma = {

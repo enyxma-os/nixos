@@ -28,7 +28,6 @@ Bu depodaki tüm kod ve yapılandırmalar [CONSTITUTION.md](./CONSTITUTION.md) h
 * **Çekirdek Omurga:** `enyxma/nixos` (Bu depo)
 * **Pencere Yöneticisi:** `enyxma/hyprland` (`git+https://codeberg.org/enyxma/hyprland`)
 * **Masaüstü Kabuğu:** `enyxma/shell` (`git+https://codeberg.org/enyxma/shell`)
-* **Sistem Entegrasyonu:** `enyxma/thornhill` (`git+https://codeberg.org/enyxma/thornhill`)
 
 ---
 
