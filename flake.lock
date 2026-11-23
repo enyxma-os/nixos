@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795456758,
-        "narHash": "sha256-LmsmqSLv9rOwtDTMPWodlqfS9xel+PDNXTM3L2sUvjk=",
+        "lastModified": 1795460543,
+        "narHash": "sha256-JOxTymf14G91qdCK8wguK4kC8mgMl87ROYzm+ko4o/M=",
         "ref": "refs/heads/main",
-        "rev": "989faaa58f9c8fb8709441b7ead943f189b1f7c3",
-        "revCount": 38,
+        "rev": "a705349608b2b12920350609fb255346854d039a",
+        "revCount": 39,
         "type": "git",
         "url": "https://codeberg.org/enyxma/hyprland"
       },
