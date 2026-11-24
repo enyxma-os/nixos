@@ -72,11 +72,11 @@
         "quickshell": "quickshell"
       },
       "locked": {
-        "lastModified": 1795477769,
-        "narHash": "sha256-3Xz3JKcxx5pod2WQKKDi7dzSuh6OZ1Kq6gExknnizag=",
+        "lastModified": 1795542149,
+        "narHash": "sha256-3vxo4Niq+9D5N0NhfdKGCpGaMeVwhtZcsMr/sIn2HlY=",
         "ref": "refs/heads/main",
-        "rev": "d2687dd08f621c8ce740a52998e8c5762311fb1a",
-        "revCount": 77,
+        "rev": "12d27a841bea87c82c7dee19503f3947710d4ce3",
+        "revCount": 78,
         "type": "git",
         "url": "https://codeberg.org/enyxma/shell"
       },
