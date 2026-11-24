@@ -121,3 +121,9 @@ just check        # Flake, deadnix ve statix anayasa denetimlerini çalıştır
 just scan-secrets # Depoda sızdırılmış anahtar, token veya geçici dosya taraması yap
 just clean        # Derleme çıktılarını ve geçici dosyaları temizle
 ```
+
+---
+
+## 📜 Lisans
+
+GPL-3.0-or-later — Ayrıntılar için [LICENSE](./LICENSE) dosyasına bakın. Telif Hakkı © 2026 Enyxma OS Contributors.
