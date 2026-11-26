@@ -55,7 +55,7 @@
         extraGroups = ["wheel" "networkmanager"];
         hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAA... user@host"
+          # "ssh-ed25519 AAAA... user@host"
         ];
       };
       root.hashedPassword = "$6$uP5VDNH2QMG14JFl$BGju.dvUCCLqXvTK4oxGh6DXiK.UwNOI9h6jxwK.vBaJ0l5aFgSbHhar6aRnh4ezKvO4ewarfrE8HVi08Zyef/";
