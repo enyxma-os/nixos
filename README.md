@@ -63,6 +63,15 @@ Enyxma OS, sıfır entropi ve veri yalıtımı için aşağıdaki Btrfs alt haci
 
 ## 🚀 Kurulum ve Dağıtım
 
+### 0. Tek Komutla Başlangıç Şablonu
+
+Mevcut bir NixOS makinesinde temiz başlangıç iskeleti oluşturmak için:
+
+```bash
+mkdir my-enyxma && cd my-enyxma
+nix flake init -t git+https://codeberg.org/enyxma/nixos
+```
+
 ### 1. Hedef Makine Yapılandırması
 Hedef sistemde donanım yapılandırması üretilir ve `hosts/<makine-adi>.nix` içine bağlanır:
 

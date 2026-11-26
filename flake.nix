@@ -89,6 +89,17 @@
       terminal = ./modules/terminal.nix;
     };
 
+    templates = {
+      default = {
+        path = ./templates/starter;
+        description = "Minimal universal Enyxma OS starter flake";
+      };
+      starter = {
+        path = ./templates/starter;
+        description = "Minimal universal Enyxma OS starter flake";
+      };
+    };
+
     nixosConfigurations = {
       test-enyxma = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
