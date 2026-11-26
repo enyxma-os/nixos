@@ -1,98 +1,105 @@
 # Enyxma OS Core
 
+> **Language / Dil:** **English** | [Türkçe](./README.tr.md)
+
 > **Sovereign, Declarative, and Zero-Entropy Operating System Core.**
 
-Enyxma OS; masaüstü dotfile kirliliğinden arındırılmış, saf, deklaratif ve egemen bir NixOS çekirdek dağıtım omurgasıdır.
+Enyxma OS is a pure, declarative, and sovereign NixOS core distribution backbone free of desktop dotfile clutter.
 
-Sistem kullanıcı arayüzleri, paneller ve pencere yöneticisi entegrasyonları bağımsız mikro depolar halinde yönetilir. Çekirdek depo olan `enyxma/nixos`; donanım soyutlamalarını, çekirdek ve önyükleyici sertleştirmesini, Btrfs alt hacimlerini, sıfır entropi dosya sistemini, temel ağ politikalarını ve güvenlik kurallarını orkestre eder.
-
----
-
-## 🏛️ Mimari İlkeler — CONSTITUTION.md
-
-Bu depodaki tüm kod ve yapılandırmalar [CONSTITUTION.md](./CONSTITUTION.md) hükümlerine tabidir:
-
-1. **Egemen Dağıtım Tabanı:** Bir dotfile veya tema koleksiyonu değildir; bağımsız bir Linux işletim sistemi omurgasıdır.
-2. **Sıfır Güven — Zero-Trust:** Sistemde ve depoda `npm` ve `npx` kullanımı kesinlikle yasaktır; tüm bağımlılıklar Nix Store ve kriptografik hash ile temin edilir.
-3. **Sıfır Entropi ve Geçici Kök:** Kök dosya sistemi kalıcı durum barındırmaz. Kalıcılık yalnızca `/persist` alt hacminde sağlanır.
-4. **Modüler İsim Uzayı:** Tüm sistem seçenekleri `enyxma.*` isim uzayı altında deklaratif olarak sunulur. Sabit kodlanmış kimlikler ve keyfi donanım yolları barındırılamaz.
-5. **Kriptografik Saflık:** Düz metin sır veya token eklenemez, tüm Git işlemleri yetkili anahtar ile imzalanır.
-6. **Kod Hijyeni:** `deadnix`, `statix` ve `alejandra` denetimlerinden geçmeyen kod depoya kabul edilmez.
+System user interfaces, panels, and window manager integrations are managed as independent micro-repositories. The core repository (`enyxma/nixos`) orchestrates hardware abstractions, kernel and bootloader hardening, Btrfs subvolumes, a zero-entropy root filesystem, baseline network policies, and security rules.
 
 ---
 
-## 🧩 Enyxma Lego Mimarisi
+## 🏛️ Architectural Principles — CONSTITUTION.md
 
-Çekirdek sistem, harici mikro arayüz repolarını `flake.nix` üzerinden modüler Lego parçaları olarak sisteme bağlar:
+All code and configuration in this repository are governed by [CONSTITUTION.md](./CONSTITUTION.md):
 
-* **Çekirdek Omurga:** `enyxma/nixos` — Bu depo
-* **Pencere Yöneticisi:** `enyxma/hyprland` — Saf Lua Hyprland katmanı
-* **Masaüstü Kabuğu:** `enyxma/shell` — Quickshell tabanlı çift temalı masaüstü kabuğu ve Ayarlar 2.0
-* **Bilişsel Omurga:** `enyxma/thornhill` — Olay tabanlı yerel sistem servisi
+1. **Sovereign Distribution Base:** Not a dotfile or theme collection; an independent Linux operating system backbone.
+2. **Zero-Trust:** `npm` and `npx` are strictly forbidden in the system and repository; all dependencies are sourced from the Nix Store with cryptographic hashes.
+3. **Zero Entropy & Ephemeral Root:** The root filesystem holds no persistent state. Persistence is explicitly isolated under the `/persist` subvolume.
+4. **Modular Namespace:** All system options are declaratively exposed under the `enyxma.*` namespace. Hardcoded user identities and arbitrary hardware paths are prohibited.
+5. **Cryptographic Purity:** No plaintext secrets or tokens may be committed; all Git commits are signed with an authorized key.
+6. **Code Hygiene:** Code that fails `deadnix`, `statix`, or `alejandra` checks is rejected.
 
 ---
 
-## ⚙️ Çekirdek Modüller
+## 🧩 Enyxma Lego Architecture
 
-| Modül | Tanım | Temel Yetenekler |
+The core system composes external micro-repositories as modular Lego blocks via `flake.nix`:
+
+* **Core Backbone:** `enyxma/nixos` — This repository
+* **Window Manager:** `enyxma/hyprland` — Pure Lua Hyprland layer
+* **Desktop Shell:** `enyxma/shell` — Quickshell-based dual-theme desktop shell & Settings 2.0
+* **Cognitive Backbone:** `enyxma/thornhill` — Event-driven local system service
+
+---
+
+## ⚙️ Core Modules
+
+| Module | Scope | Key Capabilities |
 | :--- | :--- | :--- |
-| `enyxma.core` | Taban Sistem | Flakes, zramSwap, otomatik store optimizasyonu, temel CLI araçları |
-| `enyxma.security` | Sıfır Güven | Sysctl çekirdek sertleştirme, polkit, sudo, zero-trust npm/npx yasağı |
-| `enyxma.network` | Ağ ve Güvenlik Duvarı | NetworkManager, TCP SYN cookies, sıkı firewall kuralları |
-| `enyxma.audio` | Ses Yığını | Düşük gecikmeli PipeWire, WirePlumber, PulseAudio uyumluluğu |
-| `enyxma.persistence` | Yerel Impermanence | `/persist` Btrfs bind-mount dizin ve dosya yönetimi |
-| `enyxma.desktop` | Grafik Altyapısı | Hyprland, Wayland ortam değişkenleri, XDG portalları, fontlar |
+| `enyxma.core` | Base System | Flakes, zramSwap, automatic store optimization, configurable `timeZone` & `locale` with `mkDefault`, core CLI tools |
+| `enyxma.security` | Zero-Trust | Sysctl kernel hardening, polkit, sudo, zero-trust `npm`/`npx` ban |
+| `enyxma.network` | Network & Firewall | NetworkManager, TCP SYN cookies, strict firewall rules |
+| `enyxma.audio` | Audio Stack | Low-latency PipeWire, WirePlumber, PulseAudio compatibility |
+| `enyxma.persistence` | Native Impermanence | `/persist` Btrfs bind-mount directory and file management |
+| `enyxma.desktop` | Graphics Stack | Hyprland, Wayland environment variables, XDG portals, fonts |
 
 ---
 
-## 💾 Disk Mimarisi — Btrfs Alt Hacimleri
+## 💾 Disk Architecture — Btrfs Subvolumes
 
-Enyxma OS, sıfır entropi ve veri yalıtımı için aşağıdaki Btrfs alt hacim hiyerarşisini kullanır:
+Enyxma OS uses the following Btrfs subvolume hierarchy for zero entropy and state isolation:
 
 ```text
-[Disk Bölümü]
-├── ESP / FAT32    -> /boot    EFI Sistem Bölümü
+[Disk Partition]
+├── ESP / FAT32    -> /boot    EFI System Partition
 └── NIXOS / Btrfs
-    ├── @root      -> /        Geçici kök, her açılışta sıfırlanır
+    ├── @root      -> /        Ephemeral root, wiped on every boot
     ├── @nix       -> /nix     Nix Store - zstd, noatime
-    ├── @persist   -> /persist Kalıcı veriler - zstd, noatime, neededForBoot
-    └── @home      -> /home    Kullanıcı profilleri - zstd, noatime
+    ├── @persist   -> /persist Persistent state - zstd, noatime, neededForBoot
+    └── @home      -> /home    User profiles - zstd, noatime
 ```
 
 ---
 
-## 🚀 Kurulum ve Dağıtım
+## 🚀 Installation & Deployment
 
-### 0. Tek Komutla Başlangıç Şablonu
+### 0. One-Command Starter Template
 
-Mevcut bir NixOS makinesinde temiz başlangıç iskeleti oluşturmak için:
+Initialize a clean starter configuration on any NixOS machine:
 
 ```bash
 mkdir my-enyxma && cd my-enyxma
 nix flake init -t git+https://codeberg.org/enyxma/nixos
 ```
 
-### 1. Hedef Makine Yapılandırması
-Hedef sistemde donanım yapılandırması üretilir ve `hosts/<makine-adi>.nix` içine bağlanır:
+### 1. Target Machine Configuration
+
+Generate the hardware profile on the target system and wire it into `hosts/<hostname>.nix`:
 
 ```bash
-# Donanım profilini oluşturun:
+# Generate hardware profile:
 sudo nixos-generate-config --root /mnt
 ```
 
-`hosts/<makine-adi>.nix` dosyası ilgili modülleri deklaratif olarak etkinleştirir:
+Enable the desired modules declaratively in `hosts/<hostname>.nix`:
 
 ```nix
-{ modulesPath, ... }:
+{ ... }:
 {
   imports = [
     ./hardware.nix
   ];
 
-  networking.hostName = "makine-adi";
+  networking.hostName = "my-machine";
 
   enyxma = {
-    core.enable = true;
+    core = {
+      enable = true;
+      timeZone = "UTC";
+      locale = "en_US.UTF-8";
+    };
     security.enable = true;
     network.enable = true;
     audio.enable = true;
@@ -102,37 +109,37 @@ sudo nixos-generate-config --root /mnt
 }
 ```
 
-### 2. Hızlı Masaüstü Entegrasyonu
+### 2. Quick Desktop Integration
 
-`enyxma/hyprland` ve `enyxma/shell` modüllerini sisteme veya Home Manager katmanına deklaratif olarak eklemek için:
+Attach `enyxma/hyprland` and `enyxma/shell` declaratively to your system or Home Manager layer:
 
 ```nix
 enyxma.desktop.hyprland.enable = true;
 enyxma.shell.enable = true;
 ```
 
-### 3. Sistemi Derleme ve Aktif Etme
+### 3. Build and Activate
 
 ```bash
-# Yeni yapılandırmayı devreye alma:
-sudo nixos-rebuild switch --flake .#<makine-adi>
+# Activate configuration:
+sudo nixos-rebuild switch --flake .#my-machine
 ```
 
 ---
 
-## 🛠️ Görev Yöneticisi — Justfile
+## 🛠️ Task Runner — Justfile
 
-Sistemde gizli ve örtük arka plan araçları kullanılmaz. Tüm işlemler deterministik `just` hedefleriyle yürütülür:
+Implicit background hooks like `direnv` are not used. All tasks run deterministically via `just`:
 
 ```bash
-just fmt          # Kodu standart Alejandra ve shfmt kurallarına göre biçimlendir
-just check        # Flake, deadnix ve statix anayasa denetimlerini çalıştır
-just scan-secrets # Depoda sızdırılmış anahtar, token veya geçici dosya taraması yap
-just clean        # Derleme çıktılarını ve geçici dosyaları temizle
+just fmt          # Format code with Alejandra and shfmt
+just check        # Run Flake, deadnix, and statix constitutional checks
+just scan-secrets # Scan repository for leaked keys, tokens, or temp files
+just clean        # Clean build artifacts and temporary files
 ```
 
 ---
 
-## 📜 Lisans
+## 📜 License
 
-GPL-3.0-or-later — Ayrıntılar için [LICENSE](./LICENSE) dosyasına bakın. Telif Hakkı © 2026 Enyxma OS Contributors.
+GPL-3.0-or-later — See [LICENSE](./LICENSE) for details. Copyright © 2026 Enyxma OS Contributors.
